@@ -67,6 +67,7 @@ public:
 		EventManager::Instance().Register("onPlayerStreamIn", EventCallback_Common(&onPlayerStreamIn));
 		EventManager::Instance().Register("onPlayerStreamOut", EventCallback_Common(&onPlayerStreamOut));
 		EventManager::Instance().Register("onPlayerText", EventCallback_Common(&onPlayerText));
+	    EventManager::Instance().Register("onPlayerWeaponShot", EventCallback_Common(&onPlayerWeaponShot));
 		EventManager::Instance().Register("onPlayerShotMissed", EventCallback_Common(&onPlayerShotMissed));
 		EventManager::Instance().Register("onPlayerShotPlayer", EventCallback_Common(&onPlayerShotPlayer));
 		EventManager::Instance().Register("onPlayerShotVehicle", EventCallback_Common(&onPlayerShotVehicle));
@@ -405,6 +406,11 @@ public:
 	static bool onPlayerText(EventArgs_onPlayerText* args)
 	{
 		return Runtime::Instance().DispatchEvents("playerText", true, OmpNodeEventBadRet::False, uintptr_t(*(args->list->player)), *(args->list->text));
+	}
+
+    static bool onPlayerWeaponShot(EventArgs_onPlayerWeaponShot* args)
+	{
+	    return Runtime::Instance().DispatchEvents("playerWeaponShot", true, OmpNodeEventBadRet::False, uintptr_t(*(args->list->player)), *(args->list->weapon), *(args->list->hitType), *(args->list->hitId), *(args->list->x), *(args->list->y), *(args->list->z));
 	}
 
 	static bool onPlayerShotMissed(EventArgs_onPlayerShotMissed* args)
