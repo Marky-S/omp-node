@@ -9,4 +9,4 @@
 	url = https://github.com/gulrak/filesystem
 [submodule "deps/capi"]
 	path = deps/capi
-	url = https://github.com/Marky-S/omp-capi
+	url = https://github.com/Marky-S/open.mp-capi
