@@ -1,5 +1,6 @@
 #include "../Impl.hpp"
 #include "../API.hpp"
+#include "../WorldSnapshot.hpp"
 
 DECLARE_API(Player, SetSpawnInfo, objectPtr player, uint8_t team, int skin, float x, float y, float z, float angle, uint8_t weapon1, uint32_t ammo1, uint8_t weapon2, uint32_t ammo2, uint8_t weapon3, uint32_t ammo3)
 {
@@ -1146,3 +1147,9 @@ DECLARE_API(Player, GetTrainSpeed, objectPtr player)
 	float ret = Runtime::Instance().GetOMPAPI()->Player.GetTrainSpeed(player);
 	API_RETURN(float ret);
 }
+
+REGISTER_WORLD_SNAPSHOT_API(
+	Player,
+	GetPlayersWorldSnapshot,
+	Player.GetPlayersWorldSnapshot,
+	ompapi->Core.MaxPlayers())

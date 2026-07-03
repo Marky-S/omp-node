@@ -1,5 +1,6 @@
 #include "../Impl.hpp"
 #include "../API.hpp"
+#include "../WorldSnapshot.hpp"
 
 DECLARE_API_ARGNUM(Vehicle, Create, 9, int modelid, float x, float y, float z, float rotation, int color1, int color2, int respawnDelay, bool addSiren, IntRef id)
 {
@@ -492,3 +493,9 @@ DECLARE_API(Vehicle, CountOccupants, objectPtr vehicle)
 	int ret = Runtime::Instance().GetOMPAPI()->Vehicle.CountOccupants(vehicle);
 	API_RETURN(int ret);
 }
+
+REGISTER_WORLD_SNAPSHOT_API(
+	Vehicle,
+	GetVehiclesWorldSnapshot,
+	Vehicle.GetVehiclesWorldSnapshot,
+	WorldSnapshotApi::VehiclePoolSize)
