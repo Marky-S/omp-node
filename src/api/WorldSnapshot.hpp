@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include <nlohmann/json.hpp>
+#include "json.hpp"
 #include <v8.h>
 
 #include "../helpers/v8.hpp"
