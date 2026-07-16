@@ -516,6 +516,12 @@ DECLARE_API(Player, ClearAnimations, objectPtr player, int syncType)
 	API_RETURN(bool ret);
 }
 
+DECLARE_API(Player, ClearAnimationsImmediately, objectPtr player, int syncType)
+{
+	bool ret = Runtime::Instance().GetOMPAPI()->Player.ClearAnimationsImmediately(player, syncType);
+	API_RETURN(bool ret);
+}
+
 DECLARE_API_ARGNUM(Player, GetLastShotVectors, 1, objectPtr player, FloatRef origin_x, FloatRef origin_y, FloatRef origin_z, FloatRef hit_x, FloatRef hit_y, FloatRef hit_z)
 {
 	bool ret = Runtime::Instance().GetOMPAPI()->Player.GetLastShotVectors(player, origin_x, origin_y, origin_z, hit_x, hit_y, hit_z);
